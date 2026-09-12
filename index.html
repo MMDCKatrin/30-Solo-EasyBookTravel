@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,10 @@
 <!-- ===================== Header ===================== -->
 <header>
   <h1>EasyBook Travel</h1>
+  <p>
+    Getting to your destination is the hard part — booking your flight
+    shouldn't be. We've made it so simple, anyone can do it.
+  </p>
 </header>
 
 <!-- ===================== Navigation Area ===================== -->
@@ -23,83 +28,130 @@
 <!-- ===================== Main Content Area ===================== -->
 <main>
 
-  <!-- Featured content section -->
+  <!-- Section explaining who this site is for and how it's different -->
   <section>
-    <h2>Featured Trip</h2>
-    <img
-      src="images/boracay.jpg"
-      alt="Beach in Boracay"
-      width="300">
-    <p>
-      <strong>This Week's Deal:</strong>
-      Book the Boracay Beach Escape and save on your first trip.
-    </p>
-    <button>View Trip</button>
+    <h2>Made for You</h2>
+    <p>Booking your flight is just four simple steps:</p>
+    <ol>
+      <li>Answer the questions under "Book a Flight" below</li>
+      <li>Select your flight</li>
+      <li>Review your details</li>
+      <li>Pay, and you're done</li>
+    </ol>
   </section>
 
   <hr>
 
-  <!-- Grouped list content -->
+  <!-- ============ User Interaction Area 1: Book a Flight ============ -->
   <section>
-    <h2>Popular Trips</h2>
-    <ul>
-      <li>Boracay Beach Escape</li>
-      <li>Kyoto Heritage Tour</li>
-      <li>Paris City Discovery</li>
-    </ul>
-  </section>
-
-  <hr>
-
-  <!-- Independent content area -->
-  <article>
-    <h2>Travel Tips</h2>
-    <p>
-      New to booking online? Read a few simple tips before you plan your first trip with us.
-    </p>
-  </article>
-
-  <hr>
-
-  <!-- Supporting information, related but secondary -->
-  <aside>
-    <h2>Popular Regions</h2>
-    <ul>
-      <li>Philippines</li>
-      <li>Asia</li>
-      <li>Europe</li>
-    </ul>
-  </aside>
-
-  <hr>
-
-  <!-- ============ User Interaction Area 1: Search for a Trip ============ -->
-  <section>
-    <h2>Search for a Trip</h2>
+    <h2>Book a Flight</h2>
+    <p>Answer a few simple questions and we'll find your flight.</p>
     <form action="#" method="get">
 
-      <fieldset>
-        <legend>Trip Details</legend>
-
-        <label for="destination">Where would you like to travel to?</label>
-        <br>
-        <input
-          type="text"
-          id="destination"
-          name="destination"
-          placeholder="For example: Boracay, Kyoto, Paris">
-        <br><br>
-
-        <label for="depart-date">What date would you like to leave?</label>
-        <br>
-        <input
-          type="date"
-          id="depart-date"
-          name="depart-date">
-      </fieldset>
-
+      <label for="origin">Where are you flying from?</label>
       <br>
-      <button type="submit">Search</button>
+      <input
+        type="text"
+        id="origin"
+        name="origin"
+        placeholder="Type a city, like Manila">
+      <br><br>
+
+      <label for="destination">Where are you going?</label>
+      <br>
+      <input
+        type="text"
+        id="destination"
+        name="destination"
+        placeholder="Type a city, like Tokyo">
+      <br><br>
+
+      <label for="depart-date">What date are you leaving?</label>
+      <br>
+      <input
+        type="date"
+        id="depart-date"
+        name="depart-date">
+      <br><br>
+
+      <label for="return-date">What date are you coming back? (Leave blank if you're not returning)</label>
+      <br>
+      <input
+        type="date"
+        id="return-date"
+        name="return-date">
+      <br><br>
+
+      <label for="travelers">How many people is this booking for?</label>
+      <br>
+      <select id="travelers" name="travelers">
+        <option value="1">Just me (1 person)</option>
+        <option value="2">2 people</option>
+        <option value="3">3 people</option>
+        <option value="4">4 people</option>
+        <option value="5+">5 or more people</option>
+      </select>
+      <br><br>
+
+      <label for="bags">How many bags are you bringing?</label>
+      <br>
+      <select id="bags" name="bags">
+        <option value="0">No bags</option>
+        <option value="1">1 bag</option>
+        <option value="2">2 bags</option>
+        <option value="3+">3 or more bags</option>
+      </select>
+
+      <br><br>
+      <button type="submit" class="btn">Find My Flight</button>
+    </form>
+  </section>
+
+  <hr>
+
+  <!-- Helps undecided visitors narrow down a destination -->
+  <section>
+    <h2>Don't Know Where to Go Yet?</h2>
+    <p>Let us help you find your next destination. Just answer a few easy questions.</p>
+    <form action="#" method="get">
+
+      <label for="trip-type">Would you like to stay in the Philippines, or travel somewhere else?</label>
+      <br>
+      <select id="trip-type" name="trip-type">
+        <option value="domestic">Somewhere in the Philippines</option>
+        <option value="international">Somewhere outside the Philippines</option>
+      </select>
+      <br><br>
+
+      <label for="trip-style">What kind of trip sounds fun to you?</label>
+      <br>
+      <select id="trip-style" name="trip-style">
+        <option value="beach">Beach and relaxation</option>
+        <option value="city">City sightseeing</option>
+        <option value="nature">Mountains and nature</option>
+        <option value="culture">History and culture</option>
+      </select>
+      <br><br>
+
+      <label for="trip-budget">What's your budget like?</label>
+      <br>
+      <select id="trip-budget" name="trip-budget">
+        <option value="budget">Budget-friendly</option>
+        <option value="mid-range">Mid-range</option>
+        <option value="luxury">Luxury / treat myself</option>
+      </select>
+      <br><br>
+
+      <label for="trip-length">How long do you want to travel for?</label>
+      <br>
+      <select id="trip-length" name="trip-length">
+        <option value="weekend">A quick weekend (2-3 days)</option>
+        <option value="week">About a week</option>
+        <option value="two-weeks">Two weeks or more</option>
+      </select>
+
+      <br><br>
+      <button type="submit" class="btn">Show Me Options</button>
     </form>
   </section>
 
@@ -152,7 +204,7 @@
       </fieldset>
 
       <br>
-      <button type="submit">Create Account</button>
+      <button type="submit" class="btn">Create Account</button>
     </form>
   </section>
 
@@ -183,7 +235,7 @@
       </fieldset>
 
       <br>
-      <button type="submit">Send Message</button>
+      <button type="submit" class="btn">Send Message</button>
     </form>
   </section>
 
@@ -193,6 +245,9 @@
 
 <!-- ===================== Footer ===================== -->
 <footer>
+  <p>
+    Need help? Call us anytime: 1-800-555-1234
+  </p>
   <p>
     Contact Support:
     help@easybooktravel.example
