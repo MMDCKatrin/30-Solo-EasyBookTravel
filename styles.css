@@ -1,0 +1,23 @@
+body {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #1c3235;
+  background-color: #f5fbfa;
+  margin: 0;
+  padding: 0 20px 40px;
+}
+
+h1 {
+  font-size: 2.4rem;
+  color: #ffffff;
+  margin: 0 0 10px;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: #0c4a50;
+  border-bottom: 3px solid #dceae9;
+  padding-bottom: 8px;
+}
+
