@@ -136,6 +136,12 @@ legend {
   background-color: #c9950a;
 }
 
+.form-error {
+  color: #b3261e;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
 ol li {
   margin-bottom: 8px;
   font-size: 1.05rem;
