@@ -14,6 +14,13 @@ h1 {
   margin: 0 0 10px;
 }
 
+.site-logo {
+  width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 h2 {
   font-size: 1.6rem;
   color: #0c4a50;
@@ -142,13 +149,6 @@ legend {
   margin-top: 10px;
 }
 
-.site-logo {
-  width: 220px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border-radius: 10px;
-}
 
 ol li {
   margin-bottom: 8px;
@@ -159,7 +159,7 @@ footer {
   background-color: #0e2b2e;
   color: #ffffff;
   text-align: center;
-  padding: 25px 20px;
+  padding: 40px 40px;
   margin: 0 -20px;
   border-radius: 0;
 }
