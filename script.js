@@ -57,7 +57,7 @@ function useTextAsPlaceholder(textarea) {
 }
  
 const flightForm = document.querySelector("#origin").closest("form");
-const errorMessage = document.getElementById("flight-form-error");
+const originInput = document.getElementById("origin");
 const destinationInput = document.getElementById("destination");
 const departInput = document.getElementById("depart-date");
 const returnInput = document.getElementById("return-date");
@@ -95,6 +95,10 @@ flightForm.addEventListener("submit", function (event) {
 
     if (origin === "") {
     showProblem(flightBox, originInput, "Please tell us where you're flying from.");
+    return;
+  }
+    if (destination === "") {
+    showProblem(flightBox, destinationInput, "Please tell us where you're going.");
     return;
   }
 
@@ -204,7 +208,7 @@ const destinations = [
  
 const tripForm = document.getElementById("trip-type").closest("form");
 tripForm.noValidate = true;
-
+const tripResults = document.createElement("div");
 tripResults.className = "results";
 tripResults.setAttribute("aria-live", "polite");
 tripForm.after(tripResults);
