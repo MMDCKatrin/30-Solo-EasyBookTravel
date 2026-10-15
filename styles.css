@@ -1,4 +1,4 @@
-.root {
+:root {
   --teal: #146c74;
   --teal-dark: #0c4a50;
   --teal-light: #dceae9;
@@ -9,6 +9,9 @@
   --gold-dark: #c9950a;
   --error: #b3261e;
   --focus: #0b5fff;
+  --success: #1b6b3a;
+  --success-light: #e6f4ea;
+  --error-light: #fdecea;
   --gutter: 20px;
   --content-width: 860px;
 }
@@ -48,7 +51,7 @@ img {
 
 header {
   background-color: var(--teal);
-  color: var(--black);
+  color: var(--white);
   padding: 30px 20px;
   margin: 0 calc(var(--gutter) * -1) 20px;
   text-align: center;
@@ -268,7 +271,7 @@ button:active,
 
 footer {
   background-color: #0e2b2e;
-  color: var(--black);
+  color: var(--white);
   text-align: center;
   padding: 25px 20px;
   margin: 40px calc(var(--gutter) * -1) 0;
@@ -390,7 +393,8 @@ footer p {
   font-size: 1.1rem;
   color: var(--teal-dark);
   scroll-margin-top: 90px;  
- 
+ }
+
 .result-card {
   background-color: var(--mist);
   border: 2px solid var(--teal-light);
