@@ -292,7 +292,7 @@ footer p {
   }
 
    nav {
-    position: static;    /* a sticky menu this tall would cover too much of the screen */
+    position: static;
   }
  
   nav a {
@@ -324,4 +324,94 @@ footer p {
   * {
     transition: none !important;
   }
+}
+
+.form-error,
+.form-success {
+  padding: 14px 16px;
+  border-radius: 6px;
+  border-left: 6px solid;
+  margin: 18px 0 0;
+  font-weight: bold;
+}
+ 
+.form-error {
+  color: var(--error);
+  background-color: var(--error-light);
+}
+ 
+.form-success {
+  color: var(--success);
+  background-color: var(--success-light);
+}
+ 
+.form-success:empty {
+  display: none;
+}
+ 
+.hint {
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+  color: #5f7478;
+}
+ 
+.hint-ok {
+  color: var(--success);
+  font-weight: bold;
+}
+ 
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+ 
+.checkbox-row input {
+  width: 28px;
+  height: 28px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+}
+ 
+.checkbox-row label {
+  margin: 0;
+  font-weight: normal;
+}
+ 
+/* Destination suggestions */
+.results {
+  margin-top: 28px;
+}
+ 
+.result-intro {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--teal-dark);
+  scroll-margin-top: 90px;  
+ 
+.result-card {
+  background-color: var(--mist);
+  border: 2px solid var(--teal-light);
+  border-radius: 10px;
+  padding: 18px 20px 22px;
+  margin-top: 16px;
+}
+ 
+.result-card h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--teal-dark);
+}
+ 
+.result-place {
+  margin: 2px 0 10px;
+  font-size: 0.95rem;
+  color: #5f7478;
+}
+ 
+.result-fit {
+  font-weight: bold;
+  color: var(--teal);
 }
