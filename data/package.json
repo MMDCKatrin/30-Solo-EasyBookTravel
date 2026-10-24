@@ -1,0 +1,14 @@
+{
+  "name": "easybook-travel",
+  "version": "1.0.0",
+  "description": "EasyBook Travel - simple flight booking site",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Katrin Ibe",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
