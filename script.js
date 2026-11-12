@@ -84,7 +84,7 @@ departInput.addEventListener("change", function () {
   }
 });
 
-flightForm.addEventListener("submit", function (event) {
+flightForm.addEventListener("submit", async function (event) {
 
   event.preventDefault();
 
@@ -125,20 +125,121 @@ flightForm.addEventListener("submit", function (event) {
   const people = describeCount(travelersInput.value, "person", "people");
   const bags = describeCount(bagsInput.value, "bag", "bags");
 
-  let summary = "Here's your trip: from " + origin + " to " + destination +
-    ", leaving " + prettyDate(departDate);
- 
-  if (returnDate === "") {
-    summary += " (one way)";
-  } else {
-    summary += ", coming back " + prettyDate(returnDate);
+  try {
+    const response = await fetch("/api/bookings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        origin: origin,
+        destination: destination,
+        departDate: departDate,
+        returnDate: returnDate,
+        travelers: travelersInput.value,
+        bags: bagsInput.value
+      })
+    });
+    const result = await response.json();
+
+    if (!result.success) {
+      showMessage(flightBox, result.errors.join(" "), "error");
+      return;
+    }
+
+    let summary = "Your trip is saved! Your booking reference is " + result.booking.reference +
+      ". From " + origin + " to " + destination + ", leaving " + prettyDate(departDate);
+
+    if (returnDate === "") {
+      summary += " (one way)";
+    } else {
+      summary += ", coming back " + prettyDate(returnDate);
+    }
+
+    summary += ", for " + people + " with " + bags + ".";
+
+    showMessage(flightBox, summary, "success");
+    flightForm.reset();
+    loadTrips();
+  } catch (error) {
+    showMessage(flightBox, "We couldn't save your trip right now. Please try again in a moment.", "error");
   }
- 
-  summary += ", for " + people + " with " + bags + ".";
-  summary += " Next you'll choose your flight. (That page is still being built.)";
- 
-  showMessage(flightBox, summary, "success");
 });
+
+const savedTripsList = document.getElementById("saved-trips-list");
+const savedTripsBox = document.getElementById("saved-trips-message");
+
+function makeTripCard(booking) {
+  const card = document.createElement("article");
+  card.className = "trip-card";
+
+  const title = document.createElement("h3");
+  title.textContent = booking.origin + " to " + booking.destination;
+
+  const reference = document.createElement("p");
+  reference.textContent = "Booking reference: " + booking.reference;
+
+  const dates = document.createElement("p");
+  dates.textContent = "Leaving " + prettyDate(booking.departDate);
+  if (booking.returnDate === "") {
+    dates.textContent += " (one way)";
+  } else {
+    dates.textContent += ", coming back " + prettyDate(booking.returnDate);
+  }
+
+  const details = document.createElement("p");
+  details.textContent = "For " + describeCount(booking.travelers, "person", "people") +
+    " with " + describeCount(booking.bags, "bag", "bags") + ".";
+
+  const cancelButton = document.createElement("button");
+  cancelButton.type = "button";
+  cancelButton.className = "btn";
+  cancelButton.textContent = "Cancel this trip";
+  cancelButton.addEventListener("click", function () {
+    cancelTrip(booking);
+  });
+
+  card.append(title, reference, dates, details, cancelButton);
+  return card;
+}
+
+async function loadTrips() {
+  try {
+    const response = await fetch("/api/bookings");
+    const bookings = await response.json();
+
+    savedTripsList.innerHTML = "";
+
+    if (bookings.length === 0) {
+      savedTripsList.textContent = "You have no saved trips yet. Fill in the form above to save one.";
+      return;
+    }
+
+    bookings.forEach(function (booking) {
+      savedTripsList.appendChild(makeTripCard(booking));
+    });
+  } catch (error) {
+    savedTripsList.textContent = "We couldn't load your saved trips. Please open the site with npm start.";
+  }
+}
+
+async function cancelTrip(booking) {
+  const sure = confirm("Cancel your trip to " + booking.destination + " (" + booking.reference + ")?");
+  if (!sure) {
+    return;
+  }
+
+  const response = await fetch("/api/bookings/" + booking.id, { method: "DELETE" });
+  const result = await response.json();
+
+  if (result.success) {
+    showMessage(savedTripsBox, "Your trip to " + booking.destination + " has been cancelled.", "success");
+  } else {
+    showMessage(savedTripsBox, result.errors.join(" "), "error");
+  }
+
+  loadTrips();
+}
+
+loadTrips();
  
 const destinations = [
 
@@ -434,7 +535,7 @@ const contactBox = createMessageBox(contactForm);
 contactForm.noValidate = true;
 useTextAsPlaceholder(contactMessageInput);
  
-contactForm.addEventListener("submit", function (event) {
+contactForm.addEventListener("submit", async function (event) {
   event.preventDefault();
  
   const name = contactNameInput.value.trim();
@@ -450,6 +551,22 @@ contactForm.addEventListener("submit", function (event) {
     return;
   }
  
-  showMessage(contactBox, "Thank you, " + name.split(" ")[0] + ". We got your message. (This is a practice version, so it hasn't been sent anywhere.)", "success");
-  contactForm.reset();
+  try {
+    const response = await fetch("/api/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: name, message: message })
+    });
+    const result = await response.json();
+
+    if (!result.success) {
+      showMessage(contactBox, result.errors.join(" "), "error");
+      return;
+    }
+
+    showMessage(contactBox, "Thank you, " + name.split(" ")[0] + ". We got your message and will get back to you soon.", "success");
+    contactForm.reset();
+  } catch (error) {
+    showMessage(contactBox, "We couldn't send your message right now. Please try again in a moment.", "error");
+  }
 });
