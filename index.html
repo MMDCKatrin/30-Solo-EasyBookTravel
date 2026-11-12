@@ -9,7 +9,7 @@
 
 <!-- ===================== Header ===================== -->
 <header id="top">
-  <h1><img src="resources/images/logo2.png" alt="EasyBook Travel" class="site-logo"></h1>
+  <h1><img src="resources/images/Logo2.png" alt="EasyBook Travel" class="site-logo"></h1>
   <p>
     Getting to your destination is the hard part, booking your flight
     shouldn't be. We've made it so simple, anyone can do it.
@@ -20,6 +20,7 @@
 <nav>
   <a href="#top">Home</a>
   <a href="#book-flight">Book a Flight</a>
+  <a href="#my-trips">My Saved Trips</a>
   <a href="#find-destination">Find a Destination</a>
   <a href="#contact">Contact Us</a>
 </nav>
@@ -104,9 +105,19 @@
       </select>
 
       <br><br>
-      <button type="submit" class="btn">Find My Flight</button>
+      <button type="submit" class="btn">Save My Trip</button>
       <p id="flight-form-error" class="form-error"></p>
     </form>
+  </section>
+
+  <hr>
+
+  <!-- Trips saved on the server -->
+  <section id="my-trips">
+    <h2>My Saved Trips</h2>
+    <p>Trips you save are kept here, even after you close the page.</p>
+    <p id="saved-trips-message" aria-live="polite"></p>
+    <div id="saved-trips-list"></div>
   </section>
 
   <hr>

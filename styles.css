@@ -419,3 +419,24 @@ footer p {
   font-weight: bold;
   color: var(--teal);
 }
+.trip-card {
+  background-color: var(--mist);
+  border: 2px solid var(--teal-light);
+  border-left: 6px solid var(--teal);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-top: 16px;
+}
+
+.trip-card h3 {
+  margin: 0 0 8px;
+  color: var(--teal-dark);
+}
+
+.trip-card p {
+  margin: 4px 0;
+}
+
+.trip-card .btn {
+  margin-top: 12px;
+}
